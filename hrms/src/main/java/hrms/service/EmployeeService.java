@@ -13,4 +13,5 @@ public interface EmployeeService {
     void add(String name, String email, String phone, String username, String password, String basicpay, String role, Company company, Department department);
     Iterable<Employee> getAll();
     Optional<Employee> get(Integer id);
+    void remove(Integer id);
 }

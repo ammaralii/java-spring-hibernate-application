@@ -6,15 +6,15 @@ import javax.persistence.*;
 @Table(name="department",schema = "hrms")
 public class Department {
     @Id
-    @Column(name="departmentID")
+    @Column(name="department_id")
     private int departmentId;
 
     @Basic
-    @Column(name="departmentName")
+    @Column(name="department_name")
     private String departmentName;
 
     @ManyToOne
-    @JoinColumn(name="CompanyID")
+    @JoinColumn(name="company_id")
     private Company company;
 
     public int getDepartmentId() {

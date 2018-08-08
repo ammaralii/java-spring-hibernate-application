@@ -38,4 +38,11 @@ public class EmployeeController {
     {
         return employeeService.get(id);
     }
+    @GetMapping(path = "/delete")
+    public @ResponseBody
+    String removeEmployeeByID(@RequestParam Integer id)
+    {
+        employeeService.remove(id);
+        return "Deleted Successfully";
+    }
 }

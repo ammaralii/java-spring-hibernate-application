@@ -1,47 +1,48 @@
 package hrms.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="employee", schema = "hrms")
-public class Employee {
+public class Employee{
     @Id
-    @Column(name = "EmployeeID")
+    @Column(name = "employee_id")
     private Integer employeeId;
 
-    @Column(name = "EmployeeName")
+    @Column(name = "employee_name")
     private String employeeName;
 
     @Basic
-    @Column(name = "EmployeeEmail")
+    @Column(name = "employee_email")
     private String employeeEmail;
 
     @Basic
-    @Column(name = "EmployeePhone")
+    @Column(name = "employee_phone")
     private String employeePhone;
 
     @Basic
-    @Column(name = "EmployeeUsername")
+    @Column(name = "employee_username")
     private String employeeUsername;
 
     @Basic
-    @Column(name = "EmployeePassword")
+    @Column(name = "employee_password")
     private String employeePassword;
 
     @Basic
-    @Column(name = "EmployeeBasicPay")
+    @Column(name = "employee_basic_pay")
     private String employeeBasicPay;
 
     @Basic
-    @Column(name = "EmployeeRole")
+    @Column(name = "employee_role")
     private String employeeRole;
 
     @ManyToOne
-    @JoinColumn(name = "DepartmentID",referencedColumnName = "departmentID")
+    @JoinColumn(name = "department_id",referencedColumnName = "department_id")
     private Department department;
 
     @ManyToOne
-    @JoinColumn(name = "CompanyID")
+    @JoinColumn(name = "company_id",referencedColumnName = "company_id")
     private Company company;
 
     public Employee(int employeeId, String employeeName, String employeeEmail, String employeePhone, String employeeUsername, String employeePassword, String employeeBasicPay, String employeeRole,Department d,Company c) {

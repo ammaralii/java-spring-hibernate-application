@@ -6,11 +6,11 @@ import javax.persistence.*;
 @Table(name="company",schema = "hrms")
 public class Company {
     @Id
-    @Column(name="CompanyID")
+    @Column(name="company_id")
     private Integer companyId;
 
     @Basic
-    @Column(name="CompanyName")
+    @Column(name="company_name")
     private String companyName;
 
     @Basic
@@ -18,15 +18,15 @@ public class Company {
     private String address;
 
     @Basic
-    @Column(name="CompanyCEO")
+    @Column(name="company_ceo")
     private String companyCeo;
 
     @Basic
-    @Column(name="CompanyEmail")
+    @Column(name="company_email")
     private String companyEmail;
 
     @Basic
-    @Column(name = "CaompanyPhone")
+    @Column(name = "caompany_phone")
     private String companyPhone;
 
     public int getCompanyId() {

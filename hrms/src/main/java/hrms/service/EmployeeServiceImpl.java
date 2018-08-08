@@ -37,4 +37,8 @@ public class EmployeeServiceImpl implements EmployeeService{
     {
         return employeeRepository.findById(id);
     }
+    public void remove(Integer id)
+    {
+        employeeRepository.deleteById(id);
+    }
 }
