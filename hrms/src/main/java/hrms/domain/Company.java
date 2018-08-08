@@ -1,4 +1,4 @@
-package domain;
+package hrms.domain;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Company {
     @Id
     @Column(name="CompanyID")
-    private int companyId;
+    private Integer companyId;
 
     @Basic
     @Column(name="CompanyName")

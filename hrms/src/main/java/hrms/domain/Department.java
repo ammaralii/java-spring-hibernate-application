@@ -1,4 +1,4 @@
-package domain;
+package hrms.domain;
 
 import javax.persistence.*;
 

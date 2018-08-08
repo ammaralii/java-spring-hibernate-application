@@ -1,4 +1,4 @@
-package domain;
+package hrms.domain;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Documents {
     @Id
     @Column(name = "DocumentID")
-    private int documentId;
+    private Integer documentId;
 
     @Basic
     @Column(name="CNIC_FileName")

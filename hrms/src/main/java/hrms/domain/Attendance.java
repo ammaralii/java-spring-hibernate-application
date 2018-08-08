@@ -1,11 +1,11 @@
-package domain;
+package hrms.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name="attendence",schema = "hrms")
-public class Attendence {
+public class Attendance {
     @Id
     @Column(name="AttendenceID")
     private int attendenceId;
