@@ -5,6 +5,7 @@ import hrms.domain.Department;
 import hrms.domain.Employee;
 import hrms.dto.EmployeeDTO;
 import hrms.service.EmployeeService;
+import org.hibernate.validator.internal.util.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,8 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping(path="/add") // Map ONLY GET Requests
-    public @ResponseBody String addNewEmployee (@RequestParam EmployeeDTO empDto) {
+    @PostMapping(path="/add") // Map ONLY Post Requests
+    public @ResponseBody String addNewEmployee (@RequestBody EmployeeDTO empDto) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         if(!empDto.equals(null)) {
