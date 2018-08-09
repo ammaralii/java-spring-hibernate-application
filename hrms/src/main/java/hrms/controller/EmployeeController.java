@@ -21,7 +21,12 @@ public class EmployeeController {
     public @ResponseBody String addNewEmployee (@RequestParam EmployeeDTO empDto) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        employeeService.add(empDto);
+        if(!empDto.equals(null)) {
+            employeeService.add(empDto);
+        }
+        else{
+            return "Please pass all required parameter";
+        }
         return "Saved";
     }
     @GetMapping(path="/all")
