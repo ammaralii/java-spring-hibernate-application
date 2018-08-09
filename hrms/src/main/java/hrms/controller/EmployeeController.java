@@ -3,13 +3,11 @@ package hrms.controller;
 import hrms.domain.Company;
 import hrms.domain.Department;
 import hrms.domain.Employee;
+import hrms.dto.EmployeeDTO;
 import hrms.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -19,12 +17,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping(path="/add") // Map ONLY GET Requests
-    public @ResponseBody String addNewEmployee (@RequestParam String name
-            , @RequestParam String email, @RequestParam String phone, @RequestParam String username, @RequestParam String password, @RequestParam String basicpay, @RequestParam String role, @RequestParam Company company, @RequestParam Department department) {
+    @PostMapping(path="/add") // Map ONLY GET Requests
+    public @ResponseBody String addNewEmployee (@RequestParam EmployeeDTO empDto) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        employeeService.add(name,email,phone,username,password,basicpay,role,company,department);
+        employeeService.add(empDto);
         return "Saved";
     }
     @GetMapping(path="/all")
