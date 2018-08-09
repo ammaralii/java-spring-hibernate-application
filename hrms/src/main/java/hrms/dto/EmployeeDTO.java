@@ -1,7 +1,6 @@
 package hrms.dto;
 
 public class EmployeeDTO {
-    private Integer employeeId;
     private String employeeName;
     private String employeeEmail;
     private String employeePhone;
@@ -11,14 +10,6 @@ public class EmployeeDTO {
     private String employeeRole;
     private Integer companyId;
     private Integer departmentId;
-
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
 
     public String getEmployeeName() {
         return employeeName;
