@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller    // This means that this class is a Controller
@@ -47,5 +48,12 @@ public class EmployeeController {
     {
         employeeService.remove(id);
         return "Deleted Successfully";
+    }
+    // Update an Employee
+    @PutMapping("/update/{id}")
+    public String updateEmployee(@PathVariable(value = "id") Integer id,
+                           @Valid @RequestBody EmployeeDTO empDto) {
+        employeeService.update(id,empDto);
+        return "Employee Updated Successfully";
     }
 }
