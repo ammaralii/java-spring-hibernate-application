@@ -15,4 +15,5 @@ public interface EmployeeService {
     Iterable<Employee> getAll();
     Optional<Employee> get(Integer id);
     void remove(Integer id);
+    void update(Integer id,EmployeeDTO emp);
 }

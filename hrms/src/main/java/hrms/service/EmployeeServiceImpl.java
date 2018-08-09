@@ -50,4 +50,22 @@ public class EmployeeServiceImpl implements EmployeeService{
     {
         employeeRepository.deleteById(id);
     }
+
+    @Override
+    public void update(Integer id, EmployeeDTO emp) {
+        Optional<Employee> temp = employeeRepository.findById(id);
+        Employee employee=temp.get();
+        employee.setEmployeeName(emp.getEmployeeName());
+        employee.setEmployeeEmail(emp.getEmployeeEmail());
+        employee.setEmployeePhone(emp.getEmployeePhone());
+        employee.setEmployeeUsername(emp.getEmployeeUsername());
+        employee.setEmployeePassword(emp.getEmployeePassword());
+        employee.setEmployeeBasicPay(emp.getEmployeeBasicPay());
+        employee.setEmployeeRole(emp.getEmployeeRole());
+        Optional<Company> c=companyRepository.findById(emp.getCompanyId());
+        employee.setCompany(c.get());
+        Optional<Department> d=departmentRepository.findById(emp.getDepartmentId());
+        employee.setDepartment(d.get());
+        employeeRepository.save(employee);
+    }
 }
