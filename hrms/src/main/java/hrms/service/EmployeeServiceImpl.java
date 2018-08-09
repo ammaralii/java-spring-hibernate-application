@@ -22,6 +22,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     public void add(EmployeeDTO emp) {
         Employee employee = new Employee();
+        Integer id=employeeRepository.findLastId().get(0).getEmployeeId();
+        id = id + 1;
+        employee.setEmployeeId(id);
         employee.setEmployeeName(emp.getEmployeeName());
         employee.setEmployeeEmail(emp.getEmployeeEmail());
         employee.setEmployeePhone(emp.getEmployeePhone());
