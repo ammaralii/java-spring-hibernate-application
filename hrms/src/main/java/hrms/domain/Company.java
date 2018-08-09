@@ -26,7 +26,7 @@ public class Company {
     private String companyEmail;
 
     @Basic
-    @Column(name = "caompany_phone")
+    @Column(name = "company_phone")
     private String companyPhone;
 
     public int getCompanyId() {
