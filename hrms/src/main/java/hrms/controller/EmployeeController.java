@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
-@Controller    // This means that this class is a Controller
+@RestController    // This means that this class is a Controller and do not use @ResponseBody in function because it is done automatically when we use annotation @RestController
 @RequestMapping(path="/employee") // This means URL's start with /employee (after Application path)
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
     @PostMapping(path="/add") // Map ONLY Post Requests
-    public @ResponseBody String addNewEmployee (@RequestBody EmployeeDTO empDto) {
+    public synchronized String addNewEmployee (@RequestBody EmployeeDTO empDto) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         if(!empDto.equals(null)) {
@@ -32,28 +32,30 @@ public class EmployeeController {
         return "Saved";
     }
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<Employee> getAllEmployee() {
+    public synchronized Iterable<Employee> getAllEmployee() {
         // This returns a JSON or XML with the users
         return employeeService.getAll();
     }
     @GetMapping(path = "/find")
-    public @ResponseBody
-    Optional<Employee> getEmployeeByID(@RequestParam Integer id)
+    public synchronized Optional<Employee> getEmployeeByID(@RequestParam Integer id)
     {
         return employeeService.get(id);
     }
     @GetMapping(path = "/delete")
-    public @ResponseBody
-    String removeEmployeeByID(@RequestParam Integer id)
+    public synchronized String removeEmployeeByID(@RequestParam Integer id)
     {
-        employeeService.remove(id);
+        synchronized (this) {
+            employeeService.remove(id);
+        }
         return "Deleted Successfully";
     }
     // Update an Employee
     @PutMapping("/update/{id}")
-    public String updateEmployee(@PathVariable(value = "id") Integer id,
+    public synchronized String updateEmployee(@PathVariable(value = "id") Integer id,
                            @Valid @RequestBody EmployeeDTO empDto) {
-        employeeService.update(id,empDto);
+        synchronized (this) {
+            employeeService.update(id, empDto);
+        }
         return "Employee Updated Successfully";
     }
 }
