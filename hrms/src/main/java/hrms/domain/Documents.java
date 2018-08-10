@@ -1,33 +1,57 @@
 package hrms.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name="documents", schema = "hrms")
+@Table(name="documents", schema = "hrms1")
 public class Documents {
     @Id
-    @Column(name = "DocumentID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "document_id", updatable = false, nullable = false)
     private Integer documentId;
 
     @Basic
-    @Column(name="CNIC_FileName")
+    @Column(name="cnic_file_name")
     private String cnicFileName;
 
     @Basic
-    @Column(name="CNIC_FilePath")
-    private String cnicFilePath;
+    @Column(name="cnic_file_type")
+    private String cnicFileType;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "EmployeeID")
+    @Lob
+    @Column(name="cnic_file_data")
+    private byte[] cnicFileData;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    public int getDocumentId() {
+    public Documents(String cnicFileName, String cnicFileType, byte[] cnicFileData, Employee employee) {
+        this.cnicFileName = cnicFileName;
+        this.cnicFileType = cnicFileType;
+        this.cnicFileData = cnicFileData;
+        this.employee = employee;
+    }
+
+    public Documents() {
+    }
+
+    public Integer getDocumentId() {
         return documentId;
     }
 
-    public void setDocumentId(int documentId) {
-        this.documentId = documentId;
+    public void setDocumentId(Integer id) {
+        this.documentId = id;
+    }
+
+    public String getCnicFileType() {
+        return cnicFileType;
+    }
+
+    public void setCnicFileType(String cnicFileType) {
+        this.cnicFileType = cnicFileType;
     }
 
     public String getCnicFileName() {
@@ -38,19 +62,19 @@ public class Documents {
         this.cnicFileName = cnicFileName;
     }
 
-    public String getCnicFilePath() {
-        return cnicFilePath;
-    }
-
-    public void setCnicFilePath(String cnicFilePath) {
-        this.cnicFilePath = cnicFilePath;
-    }
-
     public Employee getEmployee() {
         return employee;
     }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public byte[] getCnicFileData() {
+        return cnicFileData;
+    }
+
+    public void setCnicFileData(byte[] cnicFileData) {
+        this.cnicFileData = cnicFileData;
     }
 }
