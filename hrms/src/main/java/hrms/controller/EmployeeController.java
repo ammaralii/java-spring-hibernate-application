@@ -7,6 +7,8 @@ import hrms.dto.EmployeeDTO;
 import hrms.service.EmployeeService;
 import org.hibernate.validator.internal.util.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 
 @RestController    // This means that this class is a Controller and do not use @ResponseBody in function because it is done automatically when we use annotation @RestController
 @RequestMapping(path="/employee") // This means URL's start with /employee (after Application path)
+@EnableAsync
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
