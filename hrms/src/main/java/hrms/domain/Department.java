@@ -3,7 +3,7 @@ package hrms.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="department",schema = "hrms")
+@Table(name="department",schema = "hrms1")
 public class Department {
     @Id
     @Column(name="department_id")
