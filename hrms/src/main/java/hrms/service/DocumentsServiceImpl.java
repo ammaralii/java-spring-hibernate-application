@@ -1,32 +1,30 @@
 package hrms.service;
 
-import hrms.domain.Company;
-import hrms.domain.Department;
 import hrms.domain.Documents;
 import hrms.domain.Employee;
-import hrms.dto.EmployeeDTO;
 import hrms.exception.FileStorageException;
 import hrms.exception.MyFileNotFoundException;
-import hrms.repository.CompanyRepository;
-import hrms.repository.DepartmentRepository;
 import hrms.repository.DocumentsRepository;
 import hrms.repository.EmployeeRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Service
+@Log4j2
 public class DocumentsServiceImpl implements DocumentsService{
+    private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(DocumentsServiceImpl.class);
     @Autowired
     private DocumentsRepository documentsRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
 
     public Documents storeFile(Integer employeeId,MultipartFile file) {
+        log.debug("Calling Method Store file");
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
