@@ -17,8 +17,8 @@ import java.io.IOException;
 @Service
 @Log4j2//These notation not work in intellij version 2018.1 on this version please instantiate log
 public class DocumentsServiceImpl implements DocumentsService{
-    private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(DocumentsServiceImpl.class);
-    @Autowired
+
+     @Autowired
     private DocumentsRepository documentsRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
