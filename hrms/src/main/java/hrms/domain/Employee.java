@@ -1,11 +1,12 @@
 package hrms.domain;
 
+import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="employee", schema = "hrms1")
-public class Employee{
+public @Data class Employee{
     @Id
     @Column(name = "employee_id")
     private Integer employeeId;
@@ -44,116 +45,4 @@ public class Employee{
     @ManyToOne
     @JoinColumn(name = "company_id",referencedColumnName = "company_id")
     private Company company;
-
-    public Employee(int employeeId, String employeeName, String employeeEmail, String employeePhone, String employeeUsername, String employeePassword, String employeeBasicPay, String employeeRole,Department d,Company c) {
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
-        this.employeeEmail = employeeEmail;
-        this.employeePhone = employeePhone;
-        this.employeeUsername = employeeUsername;
-        this.employeePassword = employeePassword;
-        this.employeeBasicPay = employeeBasicPay;
-        this.employeeRole = employeeRole;
-        this.department=d;
-        this.company=c;
-    }
-
-    public Employee() {
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
-    public String getEmployeeEmail() {
-        return employeeEmail;
-    }
-
-    public void setEmployeeEmail(String employeeEmail) {
-        this.employeeEmail = employeeEmail;
-    }
-
-    public String getEmployeePhone() {
-        return employeePhone;
-    }
-
-    public void setEmployeePhone(String employeePhone) {
-        this.employeePhone = employeePhone;
-    }
-
-    public String getEmployeeUsername() {
-        return employeeUsername;
-    }
-
-    public void setEmployeeUsername(String employeeUsername) {
-        this.employeeUsername = employeeUsername;
-    }
-
-    public String getEmployeePassword() {
-        return employeePassword;
-    }
-
-    public void setEmployeePassword(String employeePassword) {
-        this.employeePassword = employeePassword;
-    }
-
-    public String getEmployeeBasicPay() {
-        return employeeBasicPay;
-    }
-
-    public void setEmployeeBasicPay(String employeeBasicPay) {
-        this.employeeBasicPay = employeeBasicPay;
-    }
-
-    public String getEmployeeRole() {
-        return employeeRole;
-    }
-
-    public void setEmployeeRole(String employeeRole) {
-        this.employeeRole = employeeRole;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeId=" + employeeId +
-                ", employeeName='" + employeeName + '\'' +
-                ", employeeEmail='" + employeeEmail + '\'' +
-                ", employeePhone='" + employeePhone + '\'' +
-                ", employeeUsername='" + employeeUsername + '\'' +
-                ", employeePassword='" + employeePassword + '\'' +
-                ", employeeBasicPay='" + employeeBasicPay + '\'' +
-                ", employeeRole='" + employeeRole + '\'' +
-                ", department=" + department +
-                ", company=" + company +
-                '}';
-    }
 }
