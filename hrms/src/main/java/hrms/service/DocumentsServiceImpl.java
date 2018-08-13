@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @Service
-@Log4j2
+@Log4j2//These notation not work in intellij version 2018.1 on this version please instantiate log
 public class DocumentsServiceImpl implements DocumentsService{
     private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(DocumentsServiceImpl.class);
     @Autowired
