@@ -7,6 +7,8 @@ import hrms.dto.EmployeeDTO;
 import hrms.service.EmployeeService;
 import org.hibernate.validator.internal.util.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
@@ -35,9 +37,9 @@ public class EmployeeController {
         return "Saved";
     }
     @GetMapping(path="/all")
-    public synchronized Iterable<Employee> getAllEmployee() {
+    public synchronized Page<Employee> getAllEmployee(Pageable pageable) {
         // This returns a JSON or XML with the users
-        return employeeService.getAll();
+        return employeeService.getAll(pageable);
     }
     @GetMapping(path = "/find")
     public synchronized Optional<Employee> getEmployeeByID(@RequestParam Integer id)
